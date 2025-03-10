@@ -4,20 +4,38 @@
     
     <title>word translator</title>
     <style>
+        body{
+            background-color: rgb(173, 129, 129);
+        }
        .container {
-width: 500px;
+width: 550px;
 height: 200px;
 padding: 20px;
 background-color: rgb(215, 212, 208);
 display: block;
-margin: 0 auto;
+margin: 10px auto;
 border-radius: 10px;
-border: 5px solid #ccc;
-color: rgb(136, 120, 120);
+border: 4px solid #aca9a9;
+color: rgb(20, 19, 19);
+
 }
 .h2{
 margin-left: 170px;
 margin-top: 5px;
+font-size: 35px;
+}
+.btn{
+    border-radius: 5px;
+    margin-left: 2px;
+    background-color: rgb(101, 222, 226);
+    font-size: large;
+}
+#word {
+font-size: large; 
+width: 300px;
+height: 30px;
+border:3px solid rgb(162, 161, 160);
+border-radius: 7px;
 }
     </style>
 </head>
@@ -25,17 +43,21 @@ margin-top: 5px;
     <div class="container" id="container">
     <h2 class="h2">word translator</h2>
     <input type="text" id="word" placeholder="Enter the word you want to translate"/>
-    <button onclick="translate()">Translate</button>
+    <button class="btn" onclick="dowork()">Translate</button>
+    <h2 id="translation"></h2>
     </div>
     <script>
-        const englishToMarathi={
-            
-    Hello:"हॅलो",
-    Goodbye: "निरोप",
+
+       const englishToMarathi = {
+        hello: "नमस्कार",
+        good : "चांगले",
+        bad : "वाईट",
+        change : "बदल",
+        bye :"बाय",
+        welcome :"स्वागत",
+        "Good bye": "निरोप",
     Please :"कृपया",
-    Beautiful    :" सुंदर ",
-    Good  : "चांगला ",
-    Bad   : "वाईट", 
+    Beautiful : " सुंदर ",
     Happy  : "आनंदी ",
     Animal  : "प्राणी ",
     Bird : " पक्षी ",
@@ -55,7 +77,22 @@ margin-top: 5px;
    No : "नाही",
 
 
-        };
+       }
+    
+  function dowork(){
+    const wordElement = document.getElementById("word");
+    const translationElement = document.getElementById("translation");
+
+    const word = wordElement.value.toLowerCase();
+   const translation = englishToMarathi[word];
+
+  if (translation) {
+translationElement.innerText = `${word} in Marathi is ${translation}`;
+ }
+ else{
+    translationElement.innerText = `Translation not found for ${word}`;
+ }
+  }
     </script>
 </body>
-</html>
+</html
